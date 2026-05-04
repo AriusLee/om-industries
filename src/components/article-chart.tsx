@@ -94,7 +94,7 @@ export function ArticleChart({ spec }: { spec: ChartSpec }) {
           </span>
         )}
         <span className="ml-auto text-[10px] uppercase tracking-[0.14em] text-[var(--muted-foreground)]">
-          Source: {spec.source}
+          Source: Orionmano Industries
         </span>
       </div>
     </figure>

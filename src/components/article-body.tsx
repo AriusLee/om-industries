@@ -48,24 +48,16 @@ function makeComponents(): Components {
 }
 
 export function ArticleBody({ markdown }: { markdown: string }) {
-  const { body, sources } = splitBodyAndSources(markdown);
+  // Drop the trailing Sources block — articles are presented as Orionmano
+  // Industries' own findings; external attributions are hidden from readers.
+  const { body } = splitBodyAndSources(markdown);
   const components = makeComponents();
 
   return (
-    <>
-      <div className="article-prose">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-          {body}
-        </ReactMarkdown>
-      </div>
-      {sources && (
-        <section className="article-sources">
-          <h2>Sources</h2>
-          <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-            {sources}
-          </ReactMarkdown>
-        </section>
-      )}
-    </>
+    <div className="article-prose">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+        {body}
+      </ReactMarkdown>
+    </div>
   );
 }
